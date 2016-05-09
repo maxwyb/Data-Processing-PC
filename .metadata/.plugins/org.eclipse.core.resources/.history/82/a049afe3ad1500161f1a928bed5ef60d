@@ -1,0 +1,10 @@
+package com.ucla.max.DataProcessing;
+
+import org.apache.spark.streaming.kafka.*;
+
+public class DataProcessing {
+	public static void kafkaIntegration() {
+		JavaPairReceiverInputDStream<String, String> KafkaStream = KafkaUtils.createStream(streamingContext,
+			     [ZK quorum], "tempSensor", 1); // consumer group ID: tempSensor; per-topic number of Kafka partitions to consume: 1
+	}
+}

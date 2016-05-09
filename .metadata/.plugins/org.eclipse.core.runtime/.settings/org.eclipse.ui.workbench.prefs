@@ -20,4 +20,4 @@ org.eclipse.e4.ui.css.theme.e4_default.org.eclipse.ui.workbench.INACTIVE_TAB_OUT
 org.eclipse.e4.ui.css.theme.e4_default.org.eclipse.ui.workbench.INACTIVE_TAB_OUTLINE_COLOR=182,188,204
 org.eclipse.e4.ui.css.theme.e4_default.org.eclipse.ui.workbench.INACTIVE_UNSELECTED_TABS_COLOR_END=255,255,255
 org.eclipse.e4.ui.css.theme.e4_default.org.eclipse.ui.workbench.INACTIVE_UNSELECTED_TABS_COLOR_START=255,255,255
-org.eclipse.jface.textfont=1|Monaco|14.0|0|COCOA|1|Monaco;
+org.eclipse.jface.textfont=1|Monaco|13.0|0|COCOA|1|Monaco;
