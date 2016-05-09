@@ -27,7 +27,7 @@ public class DataTransfer {
 		 Producer<String, String> producer = new KafkaProducer<>(props);
 		 for(int i = 0; i < 100; i++) {
 			 System.out.printf("Sending data... i = %d\n", i);
-		     producer.send(new ProducerRecord<String, String>("temperature", Integer.toString(i), Integer.toString(i))); // send to topic "temperature"
+		     producer.send(new ProducerRecord<String, String>("temperature", Integer.toString(1), Integer.toString(i))); // send to topic "temperature"
 		 }
 		 
 		 producer.close();
@@ -37,7 +37,7 @@ public class DataTransfer {
 		System.out.printf("startConsumer() called.\n");
 		
 	     Properties props = new Properties();
-	     props.put("bootstrap.servers", "localhost:2181"); // consumer port 2181
+	     props.put("bootstrap.servers", "localhost:9092"); // consumer port 9092; in Terminal consumer port is 2181.
 	     props.put("group.id", "tempSensor"); // ID of the consumer group
 	     props.put("enable.auto.commit", "true");
 	     props.put("auto.commit.interval.ms", "1000");

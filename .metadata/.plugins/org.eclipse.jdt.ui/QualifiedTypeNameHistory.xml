@@ -8,4 +8,18 @@
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="org.apache.kafka.clients.consumer.ConsumerRecords"/>
 <fullyQualifiedTypeName name="org.apache.kafka.clients.consumer.ConsumerRecord"/>
+<fullyQualifiedTypeName name="org.apache.spark.SparkConf"/>
+<fullyQualifiedTypeName name="org.apache.spark.streaming.api.java.JavaStreamingContext"/>
+<fullyQualifiedTypeName name="org.apache.spark.streaming.Durations"/>
+<fullyQualifiedTypeName name="org.apache.spark.streaming.api.java.JavaPairReceiverInputDStream"/>
+<fullyQualifiedTypeName name="org.apache.spark.streaming.Duration"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="org.apache.spark.streaming.api.java.JavaDStream"/>
+<fullyQualifiedTypeName name="java.util.function.Function"/>
+<fullyQualifiedTypeName name="scala.Tuple2"/>
+<fullyQualifiedTypeName name="org.apache.spark.api.java.function.Function"/>
+<fullyQualifiedTypeName name="org.apache.spark.api.java.JavaRDD"/>
+<fullyQualifiedTypeName name="org.apache.spark.api.java.function.Function2"/>
+<fullyQualifiedTypeName name="org.apache.spark.streaming.Time"/>
 </qualifiedTypeNameHistroy>

@@ -22,7 +22,7 @@ public class DataProcessing {
 	@SuppressWarnings("deprecation")
 	public static void processKafkaData() {
 		
-	    SparkConf sparkConf = new SparkConf().setAppName("processKafkaData").setMaster("local[2]");
+	    SparkConf sparkConf = new SparkConf().setAppName("processKafkaData").setMaster("local[1]").set("spark.driver.host", "localhost").set("spark.driver.port", "9092");
 	    	// Create the context with 2 seconds batch size
 	    JavaStreamingContext jssc = new JavaStreamingContext(sparkConf, new Duration(2000)); // "Duration" imported to be in "org.apache.spark.streaming"
 		
@@ -59,14 +59,20 @@ public class DataProcessing {
 	    	System.out.printf("A normal day.\n");
 	    */
 
-	    lines.foreachRDD(
+	    System.out.printf("Preparing to process lines.foreachRDD. \n");
+	    
+//	    while (true) {
+//	    	System.out.printf("In infinite loop...\n");
+	    	lines.foreachRDD(
 	    		new Function2<JavaRDD<String>, Time, Void>() { // "Time" imported to be in "org.apache.spark.streaming.Time"
 	    			@Override
 	    			public Void call(JavaRDD<String> dataSet, Time time) {
 	    				
+	    				System.out.printf("Starting to process one javaRDD!\n");
+	    				
 	    				int count = dataSet.map(new Function<String, Integer>() {
 	    			    	@Override
-	    			    	public Integer call(String string) { // if the temperature string is greater than 90, add an element 1 to the new Integer array
+	    			    	public Integer call(String string) { // if the temperature string is greater than 90, add an element 1 to the new Integer array; otherwise add 0 to the new array.
 	    			    		return (Integer.parseInt(string) >= 90) ? 1 : 0;
 	    			    	}
 	    			    }).reduce(new Function2<Integer, Integer, Integer>() {
@@ -84,8 +90,15 @@ public class DataProcessing {
 	    			    return null;
 	    			}
 	    		}
-	    );
-	}
+	    	);
+	    	
+	        jssc.start();
+	        jssc.awaitTermination();
+	        
+	    }
+	
+	
+//	}
 	
 	/*
 	public static void kafkaIntegration() {
