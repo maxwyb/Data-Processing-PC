@@ -24,7 +24,7 @@ public class DataProcessing {
 		
 	    SparkConf sparkConf = new SparkConf().setAppName("processKafkaData").setMaster("local[1]").set("spark.driver.host", "localhost").set("spark.driver.port", "9092");
 	    	// Create the context with 2 seconds batch size
-	    JavaStreamingContext jssc = new JavaStreamingContext(sparkConf, new Duration(2)); // "Duration" imported to be in "org.apache.spark.streaming"
+	    JavaStreamingContext jssc = new JavaStreamingContext(sparkConf, new Duration(2000)); // "Duration" imported to be in "org.apache.spark.streaming"
 		
 	    // get messages of key-value pairs by Kafka consumer
 	    Map<String, Integer> topicMap = new HashMap<String, Integer>();
