@@ -19,8 +19,8 @@ import scala.Tuple2;
 
 public class DataProcessing {
 	
-//	@SuppressWarnings("deprecation")
-	@SuppressWarnings("all")
+	@SuppressWarnings("deprecation")
+//	@SuppressWarnings("all")
 	public static void processKafkaData() {
 		
 	    SparkConf sparkConf = new SparkConf().setAppName("processKafkaData").setMaster("local[2]").set("spark.driver.host", "localhost").set("spark.driver.port", "9095");
