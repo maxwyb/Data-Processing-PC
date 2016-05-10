@@ -112,11 +112,9 @@ public class DataProducer {
 	
 	public static void main(String args[]) {
 		
-		while (true) { // continuously getting data
-			startServer();
-			parseTemperature();
-			startProducer();
-		}
+		startServer();
+		parseTemperature();
+		startProducer();
 		
 	}
 }

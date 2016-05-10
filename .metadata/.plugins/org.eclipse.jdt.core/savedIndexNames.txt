@@ -94,7 +94,6 @@ INDEX VERSION 1.127+/Users/Max/Desktop/Data-Processing-PC/.metadata/.plugins/org
 306326927.index
 3020114350.index
 1103472298.index
-2363011483.index
 2545238116.index
 3896751461.index
 1797707512.index
