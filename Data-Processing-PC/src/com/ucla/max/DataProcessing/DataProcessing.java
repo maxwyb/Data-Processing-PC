@@ -2,7 +2,6 @@ package com.ucla.max.DataProcessing;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import java.io.*;
 import java.net.*;
 
@@ -24,20 +23,26 @@ public class DataProcessing {
 	
 	public static String result = ""; // analysis result sending back to Android device
 	
+    public static String PC_IP = "131.179.30.165";
+    public static String ANDROID_IP = "131.179.45.16";
+    public static Integer PORT = 9930;
+    
 	@SuppressWarnings("deprecation")
-	public static void processKafkaData() {
+	public static void processKafkaData() { 
+		// Using Apache Spark Streaming, process the temperature data sent from Kafka producer.
+		// Then send the result back to Android device.
 		
 	    SparkConf sparkConf = new SparkConf().setAppName("processKafkaData").setMaster("local[2]").set("spark.driver.host", "localhost").set("spark.driver.port", "9095");
 	    	// Create the context with 2 seconds batch size
-	    JavaStreamingContext jssc = new JavaStreamingContext(sparkConf, new Duration(2000)); // "Duration" imported to be in "org.apache.spark.streaming"
+	    JavaStreamingContext jssc = new JavaStreamingContext(sparkConf, new Duration(2000)); 
 		
 	    // get messages of key-value pairs by Kafka consumer
 	    Map<String, Integer> topicMap = new HashMap<String, Integer>();
 	    topicMap.put("temperature", 1);
-		JavaPairReceiverInputDStream<String, String> messages = KafkaUtils.createStream(jssc, "127.0.0.1", "tempSensor", topicMap); // consumer group ID: tempSensor; per-topic number of Kafka partitions to consume: "temperature" <-> 1
+		JavaPairReceiverInputDStream<String, String> messages = KafkaUtils.createStream(jssc, "127.0.0.1", "tempSensor", topicMap); // consumer group ID: tempSensor; per-topic number of Kafka partitions to consume: "temperature" <-> 1; "127.0.0.1" is localhost zookeeper quorum 
 		
 		// parse the message to get values only
-	    JavaDStream<String> lines = messages.map(new Function<Tuple2<String, String>, String>() { // "Function" imported to be in "org.apache.spark.api.java.Function"
+	    JavaDStream<String> lines = messages.map(new Function<Tuple2<String, String>, String>() { 
 	        @Override
 	        public String call(Tuple2<String, String> tuple2) {
 	          return tuple2._2();
@@ -65,7 +70,6 @@ public class DataProcessing {
 	    */
 	    
 	    // Rule #1: check if any temperature sensor data is above a threshold
-	    // trying process JavaDStream directly, without foreachRDD()
 	    JavaDStream<Integer> count = lines.map(new Function<String, Integer>() {
 	    	@Override
 	    	public Integer call(String string) {
@@ -77,9 +81,9 @@ public class DataProcessing {
 	    	public Integer call(Integer integer, Integer integer2) {
 	    		return (integer + integer2);
 	    	}
-	    });
+	    }); // Now each JavaRDD in every JavaDStream contains only one integer.
 	    
-	    count.foreachRDD(
+	    count.foreachRDD( // examine data in each RDD in each JavaDStream
 	    	new Function2<JavaRDD<Integer>, Time, Void>() {
 	    		@Override
 	    		public Void call(JavaRDD<Integer> dataSet, Time time) {
@@ -120,8 +124,10 @@ public class DataProcessing {
     			    }
 //    			    else 
 //    			    	System.out.printf("Data showing a normal day.\n");
-    			    sendBackResult();
     			    
+    			    // finished processing data. Send result to Android device.
+    			    sendBackResult();
+    			   
     			    return null;
 	    		}
 	    	}
@@ -169,13 +175,14 @@ public class DataProcessing {
     }
 	
 	public static void sendBackResult() {
+		// send analysis result back to Android by Socket communication. Here Android is server and PC is client.
 		Socket mySocket = null;
         DataOutputStream os = null;
         // DataInputStream is = null;
         BufferedReader is = null;
 
         try {
-            mySocket = new Socket("131.179.30.188", 9930);
+            mySocket = new Socket(ANDROID_IP, PORT);
             os = new DataOutputStream(mySocket.getOutputStream());
             // is = new DataInputStream(mySocket.getInputStream());
             is = new BufferedReader(new InputStreamReader(mySocket.getInputStream()));
@@ -187,21 +194,7 @@ public class DataProcessing {
 
         if (mySocket != null && os != null && is != null) {
             try {
-//                os.writeBytes("Lo and Behold!\n");
-//                os.writeBytes("QUIT");
                 os.writeBytes(result);
-//                for (int i = 0; i < DATA_COUNT; i++) {
-//                    Log.d("sunnyDay", "Sending messages to server...");
-//                    os.writeInt(num[i]);
-//                }
-
-                // not expecting reply from the server (Android device), so directly close the Socket.
-                /* 
-                String responseLine;
-                while ((responseLine = is.readLine()) != null) {
-                    String message = "Got server reply: " + responseLine;
-                }
-				*/
                 
                	System.out.printf("Closing the Socket...\n");
                 os.close();
@@ -217,6 +210,7 @@ public class DataProcessing {
 
 	
 	
+// some reference code for Kafka and Spark Streaming
 //	}
 	
 	/*

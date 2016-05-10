@@ -13,11 +13,18 @@ public class DataProducer {
 //	public static Integer[] num = {14, 32, 50, 68, 86, 90, 108};
 	public static int DATA_COUNT = 10;
 	public static Integer[] num = new Integer[DATA_COUNT];
+	
 	public static String temperature = ""; // a String for receiving temperature data from Android device
 	
+    public static String PC_IP = "131.179.30.165";
+    public static String ANDROID_IP = "131.179.45.16";
+    public static Integer PORT = 9930;
+	
 	public static void startProducer() {
+		// Use Kafka producer to send the temperature data coming from Android device to Kafka server
 		 System.out.printf("startProducer() called.\n");
 		
+		 // initialize Kafka producer
 		 Properties props = new Properties();
 		 props.put("bootstrap.servers", "localhost:9092"); // producer port 9092
 		 props.put("acks", "all");
@@ -28,6 +35,7 @@ public class DataProducer {
 		 props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 		 props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
+		 // send data to Kafka server
 		 Producer<String, String> producer = new KafkaProducer<>(props);
 		 for(int i = 0; i < DATA_COUNT; i++) {
 			 System.out.printf("Sending data... num = %d\n", num[i]);
@@ -38,33 +46,30 @@ public class DataProducer {
 	}
 	
 	public static void startServer() {
+		// initialize a Socket for TCP/IP communication with Android device.
+		// Receiving temperature data from Android.
 		System.out.printf("Preparing to start server...\n");
 		
 		ServerSocket echoServer = null;
         String line;
         // DataInputStream is;
         BufferedReader is;
-        PrintStream os;
+        // PrintStream os;
         Socket clientSocket = null;
-		// Try to open a server socket on port 9999
-		// Note that we can't choose a port less than 1023 if we are not
-		// privileged users (root)
-        
+
         System.out.printf("Initializing Socket...\n");
         try {
-           echoServer = new ServerSocket(9930);
+           echoServer = new ServerSocket(PORT);
         } catch (IOException e) {
            System.out.println(e);
         }   
-		// Create a socket object from the ServerSocket to listen and accept 
-		// connections.
-		// Open input and output streams
+
 	    try {
+	    	   // waiting for client connection
 	           clientSocket = echoServer.accept();
 	           // is = new DataInputStream(clientSocket.getInputStream());
 	           is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-	           os = new PrintStream(clientSocket.getOutputStream());
-	           // As long as we receive data, echo that data back to the client.
+//	           os = new PrintStream(clientSocket.getOutputStream());
 	           
 	           System.out.printf("Connection with client established. Listening for incoming messages...\n");
 	           while (true) {
@@ -72,7 +77,7 @@ public class DataProducer {
 //	             os.println(line); 
 //	             System.out.printf("Echoed the message from client.\n");
 	             
-	             temperature = line; // received the String from Android for temperature data
+	             temperature = line; // receive the String from Android for temperature data
 	             System.out.printf("Received temperature data of String format. Closing server...\n");
 	             break;
 	           }
@@ -91,16 +96,19 @@ public class DataProducer {
 	}
 	
 	public static void parseTemperature() {
+		// parse the incoming temperature data from String to Integer array.
 		String[] parsing = temperature.split(", ");
 		for (int i = 0; i < DATA_COUNT; i++) {
 			num[i] = Integer.parseInt(parsing[i]);
 		}
 		
+		System.out.printf("Temperature data array generated: ");
 		for (int i = 0; i < DATA_COUNT; i++) {
 			System.out.printf("num[%d] = %d; ", i, num[i]);
 		}
 		System.out.printf("\n");
 	}
+	
 	
 	public static void main(String args[]) {
 		
