@@ -22,14 +22,14 @@ public class DataProcessing {
 	@SuppressWarnings("deprecation")
 	public static void processKafkaData() {
 		
-	    SparkConf sparkConf = new SparkConf().setAppName("processKafkaData").setMaster("local[2]").set("spark.driver.host", "localhost").set("spark.driver.port", "9095");
+	    SparkConf sparkConf = new SparkConf().setAppName("processKafkaData").setMaster("local[2]").set("spark.driver.host", "0.0.0.0").set("spark.driver.port", "2181");
 	    	// Create the context with 2 seconds batch size
 	    JavaStreamingContext jssc = new JavaStreamingContext(sparkConf, new Duration(2000)); // "Duration" imported to be in "org.apache.spark.streaming"
 		
 	    // get messages of key-value pairs by Kafka consumer
 	    Map<String, Integer> topicMap = new HashMap<String, Integer>();
 	    topicMap.put("temperature", 1);
-		JavaPairReceiverInputDStream<String, String> messages = KafkaUtils.createStream(jssc, "127.0.0.1", "tempSensor", topicMap); // consumer group ID: tempSensor; per-topic number of Kafka partitions to consume: "temperature" <-> 1
+		JavaPairReceiverInputDStream<String, String> messages = KafkaUtils.createStream(jssc, "1", "tempSensor", topicMap); // consumer group ID: tempSensor; per-topic number of Kafka partitions to consume: "temperature" <-> 1
 		
 		// parse the message to get values only
 	    JavaDStream<String> lines = messages.map(new Function<Tuple2<String, String>, String>() { // "Function" imported to be in "org.apache.spark.api.java.Function"

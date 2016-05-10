@@ -29,7 +29,7 @@ public class DataProcessing {
 	    // get messages of key-value pairs by Kafka consumer
 	    Map<String, Integer> topicMap = new HashMap<String, Integer>();
 	    topicMap.put("temperature", 1);
-		JavaPairReceiverInputDStream<String, String> messages = KafkaUtils.createStream(jssc, "127.0.0.1", "tempSensor", topicMap); // consumer group ID: tempSensor; per-topic number of Kafka partitions to consume: "temperature" <-> 1
+		JavaPairReceiverInputDStream<String, String> messages = KafkaUtils.createStream(jssc, "localhost", "tempSensor", topicMap); // consumer group ID: tempSensor; per-topic number of Kafka partitions to consume: "temperature" <-> 1
 		
 		// parse the message to get values only
 	    JavaDStream<String> lines = messages.map(new Function<Tuple2<String, String>, String>() { // "Function" imported to be in "org.apache.spark.api.java.Function"

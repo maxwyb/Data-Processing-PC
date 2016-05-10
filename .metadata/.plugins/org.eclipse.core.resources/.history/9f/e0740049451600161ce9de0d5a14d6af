@@ -22,14 +22,14 @@ public class DataProcessing {
 	@SuppressWarnings("deprecation")
 	public static void processKafkaData() {
 		
-	    SparkConf sparkConf = new SparkConf().setAppName("processKafkaData").setMaster("local[2]").set("spark.driver.host", "localhost").set("spark.driver.port", "9095");
+	    SparkConf sparkConf = new SparkConf().setAppName("processKafkaData").setMaster("local[1]").set("spark.driver.host", "localhost").set("spark.driver.port", "9092");
 	    	// Create the context with 2 seconds batch size
-	    JavaStreamingContext jssc = new JavaStreamingContext(sparkConf, new Duration(2000)); // "Duration" imported to be in "org.apache.spark.streaming"
+	    JavaStreamingContext jssc = new JavaStreamingContext(sparkConf, new Duration(2)); // "Duration" imported to be in "org.apache.spark.streaming"
 		
 	    // get messages of key-value pairs by Kafka consumer
 	    Map<String, Integer> topicMap = new HashMap<String, Integer>();
 	    topicMap.put("temperature", 1);
-		JavaPairReceiverInputDStream<String, String> messages = KafkaUtils.createStream(jssc, "127.0.0.1", "tempSensor", topicMap); // consumer group ID: tempSensor; per-topic number of Kafka partitions to consume: "temperature" <-> 1
+		JavaPairReceiverInputDStream<String, String> messages = KafkaUtils.createStream(jssc, "1", "tempSensor", topicMap); // consumer group ID: tempSensor; per-topic number of Kafka partitions to consume: "temperature" <-> 1
 		
 		// parse the message to get values only
 	    JavaDStream<String> lines = messages.map(new Function<Tuple2<String, String>, String>() { // "Function" imported to be in "org.apache.spark.api.java.Function"
@@ -42,7 +42,7 @@ public class DataProcessing {
 	    // if we can get each JavaRDD inside the JavaDStream, we can apply the following to process temperature data.
 	    /*
 	    JavaRDD<String> dataSet;
-	    int count = lines.map(new Function<String, Integer>() {
+	    int count = dataSet.map(new Function<String, Integer>() {
 	    	@Override
 	    	public Integer call(String string) {
 	    		return (Integer.parseInt(string) >= 90) ? 1 : 0;
@@ -58,73 +58,44 @@ public class DataProcessing {
 	    else 
 	    	System.out.printf("A normal day.\n");
 	    */
-	    
-	    // trying process JavaDStream directly, without foreachRDD()
-	    JavaDStream<Integer> count = lines.map(new Function<String, Integer>() {
-	    	@Override
-	    	public Integer call(String string) {
-	    		return (Integer.parseInt(string) >= 90) ? 1 : 0;
-	    	}
-	    }).reduce(new Function2<Integer, Integer, Integer>() {
-	    	@Override
-	    	public Integer call(Integer integer, Integer integer2) {
-	    		return (integer + integer2);
-	    	}
-	    });
-	    
-	    count.foreachRDD(
-	    	new Function2<JavaRDD<Integer>, Time, Void>() {
-	    		@Override
-	    		public Void call(JavaRDD<Integer> dataSet, Time time) {
-	    			Integer num = dataSet.first();
-    			    if (num > 0)
-    			    	System.out.printf("Today is hot! There is at least one temperature data greater than 90 degree.\n");
-    			    else 
-    			    	System.out.printf("A normal day.\n");
-    			    return null;
-	    		}
-	    	}
-	    );
 
 	    System.out.printf("Preparing to process lines.foreachRDD. \n");
 	    
 //	    while (true) {
 //	    	System.out.printf("In infinite loop...\n");
-	    /*
-    	lines.foreachRDD(
-    		new Function2<JavaRDD<String>, Time, Void>() { // "Time" imported to be in "org.apache.spark.streaming.Time"
-    			@Override
-    			public Void call(JavaRDD<String> dataSet, Time time) {
-    				
-    				System.out.printf("Starting to process one javaRDD!\n");
-    				
-    				int count = dataSet.map(new Function<String, Integer>() {
-    			    	@Override
-    			    	public Integer call(String string) { // if the temperature string is greater than 90, add an element 1 to the new Integer array; otherwise add 0 to the new array.
-    			    		return (Integer.parseInt(string) >= 90) ? 1 : 0;
-    			    	}
-    			    }).reduce(new Function2<Integer, Integer, Integer>() {
-    			    	@Override
-    			    	public Integer call(Integer integer, Integer integer2) { // sum up all numbers in the new Integer array
-    			    		return (integer + integer2);
-    			    	}
-    			    });
-    				
-    			    if (count > 0)
-    			    	System.out.printf("Today is hot! There is at least one temperature data greater than 90 degree.\n");
-    			    else 
-    			    	System.out.printf("A normal day.\n");
-    			    
-    			    return null;
-    			}
-    		}
-    	);
-    	*/
-    	
-        jssc.start();
-        jssc.awaitTermination();
-        
-    }
+	    	lines.foreachRDD(
+	    		new Function2<JavaRDD<String>, Time, Void>() { // "Time" imported to be in "org.apache.spark.streaming.Time"
+	    			@Override
+	    			public Void call(JavaRDD<String> dataSet, Time time) {
+	    				
+	    				System.out.printf("Starting to process one javaRDD!\n");
+	    				
+	    				int count = dataSet.map(new Function<String, Integer>() {
+	    			    	@Override
+	    			    	public Integer call(String string) { // if the temperature string is greater than 90, add an element 1 to the new Integer array; otherwise add 0 to the new array.
+	    			    		return (Integer.parseInt(string) >= 90) ? 1 : 0;
+	    			    	}
+	    			    }).reduce(new Function2<Integer, Integer, Integer>() {
+	    			    	@Override
+	    			    	public Integer call(Integer integer, Integer integer2) { // sum up all numbers in the new Integer array
+	    			    		return (integer + integer2);
+	    			    	}
+	    			    });
+	    				
+	    			    if (count > 0)
+	    			    	System.out.printf("Today is hot! There is at least one temperature data greater than 90 degree.\n");
+	    			    else 
+	    			    	System.out.printf("A normal day.\n");
+	    			    
+	    			    return null;
+	    			}
+	    		}
+	    	);
+	    	
+	        jssc.start();
+	        jssc.awaitTermination();
+	        
+	    }
 	
 	
 //	}
