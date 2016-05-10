@@ -69,8 +69,8 @@ public class DataProducer {
 	           System.out.printf("Connection with client established. Listening for incoming messages...\n");
 	           while (true) {
 	             line = is.readLine();
-//	             os.println(line); 
-//	             System.out.printf("Echoed the message from client.\n");
+	             os.println(line); 
+	             System.out.printf("Echoed the message from client.\n");
 	             
 	             temperature = line; // received the String from Android for temperature data
 	             System.out.printf("Received temperature data of String format. Closing server...\n");

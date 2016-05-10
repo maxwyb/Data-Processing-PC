@@ -120,13 +120,12 @@ public class DataProcessing {
     			    }
 //    			    else 
 //    			    	System.out.printf("Data showing a normal day.\n");
-    			    sendBackResult();
-    			    
     			    return null;
 	    		}
 	    	}
 	    );
 	    
+	    sendBackResult();
 
 //	    System.out.printf("Preparing to process lines.foreachRDD. \n");
 	    

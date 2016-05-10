@@ -1,4 +1,9 @@
 ## Data-Processing - Server program ##
+### Newest Update ###
+Now all functionalities are working. Detailed usage for the server program and client program will be updated tomorrow. 
+Android client program website: 
+[https://github.com/maxwyb/Data-Processing-Android]
+
 ### Notes ###
 This is an Eclipse project with Maven dependencies. Should be able to be directly imported into a Eclipse workspace.
 

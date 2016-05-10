@@ -26,11 +26,13 @@
 	</section>
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="Data-Producer"/>
 			<item value="Data-Processing-PC"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="Data-Producer"/>
 			<item value="Data-Processing-PC"/>
 		</list>
 		<list key="version">

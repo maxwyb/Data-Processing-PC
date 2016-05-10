@@ -22,4 +22,9 @@
 <fullyQualifiedTypeName name="org.apache.spark.api.java.JavaRDD"/>
 <fullyQualifiedTypeName name="org.apache.spark.api.java.function.Function2"/>
 <fullyQualifiedTypeName name="org.apache.spark.streaming.Time"/>
+<fullyQualifiedTypeName name="java.net.Socket"/>
+<fullyQualifiedTypeName name="java.io.DataOutputStream"/>
+<fullyQualifiedTypeName name="java.io.DataInputStream"/>
+<fullyQualifiedTypeName name="java.net.UnknownHostException"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
 </qualifiedTypeNameHistroy>
