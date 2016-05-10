@@ -84,8 +84,8 @@ public class DataProducer {
 	}
 	
 	public static void main(String args[]) {
-		
 		// startProducer();
+		
 		startServer();
 	}
 }

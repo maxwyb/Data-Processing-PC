@@ -64,7 +64,7 @@ public class DataProducer {
 	           // As long as we receive data, echo that data back to the client.
 	           
 	           System.out.printf("Connection with client established. Listening for incoming messages...\n");
-	           while (true) {
+	           while (is.readLine() != null) {
 	             line = is.readLine();
 	             os.println(line); 
 	             System.out.printf("Echoed the message from client.\n");
@@ -84,8 +84,8 @@ public class DataProducer {
 	}
 	
 	public static void main(String args[]) {
-		
 		// startProducer();
+		
 		startServer();
 	}
 }

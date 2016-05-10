@@ -39,8 +39,7 @@ public class DataProducer {
 		
 		ServerSocket echoServer = null;
         String line;
-        // DataInputStream is;
-        BufferedReader is;
+        DataInputStream is;
         PrintStream os;
         Socket clientSocket = null;
 		// Try to open a server socket on port 9999
@@ -58,22 +57,19 @@ public class DataProducer {
 		// Open input and output streams
 	    try {
 	           clientSocket = echoServer.accept();
-	           // is = new DataInputStream(clientSocket.getInputStream());
-	           is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+	           is = new DataInputStream(clientSocket.getInputStream());
 	           os = new PrintStream(clientSocket.getOutputStream());
 	           // As long as we receive data, echo that data back to the client.
 	           
-	           System.out.printf("Connection with client established. Listening for incoming messages...\n");
+	           System.out.printf("Listening for incoming messages...\n");
 	           while (true) {
 	             line = is.readLine();
 	             os.println(line); 
-	             System.out.printf("Echoed the message from client.\n");
 	           }
 	     } catch (IOException e) {
 	           System.out.println(e);
 	     }
 	    
-	    System.out.printf("Closing sockets...");
 	    try {
 	        clientSocket.close();
 	        echoServer.close();
@@ -84,8 +80,8 @@ public class DataProducer {
 	}
 	
 	public static void main(String args[]) {
-		
 		// startProducer();
+		
 		startServer();
 	}
 }
