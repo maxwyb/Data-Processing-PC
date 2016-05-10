@@ -19,8 +19,7 @@ import scala.Tuple2;
 
 public class DataProcessing {
 	
-//	@SuppressWarnings("deprecation")
-	@SuppressWarnings("all")
+	@SuppressWarnings("deprecation")
 	public static void processKafkaData() {
 		
 	    SparkConf sparkConf = new SparkConf().setAppName("processKafkaData").setMaster("local[2]").set("spark.driver.host", "localhost").set("spark.driver.port", "9095");
@@ -60,12 +59,10 @@ public class DataProcessing {
 	    	System.out.printf("A normal day.\n");
 	    */
 	    
-	    // Rule #1: check if any temperature sensor data is above a threshold
 	    // trying process JavaDStream directly, without foreachRDD()
 	    JavaDStream<Integer> count = lines.map(new Function<String, Integer>() {
 	    	@Override
 	    	public Integer call(String string) {
-	    		System.out.printf("Received a JavaDStream; temperature = %d.\n", Integer.parseInt(string));
 	    		return (Integer.parseInt(string) >= 90) ? 1 : 0;
 	    	}
 	    }).reduce(new Function2<Integer, Integer, Integer>() {
@@ -82,42 +79,14 @@ public class DataProcessing {
 	    			Integer num = dataSet.first();
     			    if (num > 0)
     			    	System.out.printf("Today is hot! There is at least one temperature data greater than 90 degree.\n");
-//    			    else 
-//    			    	System.out.printf("Data showing a normal day.\n");
-    			    return null;
-	    		}
-	    	}
-	    );
-	    
-	    // Rule #2: Check if any temperature sensor data is below a threshold
-	    JavaDStream<Integer> count2 = lines.map(new Function<String, Integer>() {
-	    	@Override
-	    	public Integer call(String string) {
-//	    		System.out.printf("Received a JavaDStream; temperature = %d.\n", Integer.parseInt(string));
-	    		return (Integer.parseInt(string) <= 32) ? 1 : 0;
-	    	}
-	    }).reduce(new Function2<Integer, Integer, Integer>() {
-	    	@Override
-	    	public Integer call(Integer integer, Integer integer2) {
-	    		return (integer + integer2);
-	    	}
-	    });
-	    
-	    count2.foreachRDD(
-	    	new Function2<JavaRDD<Integer>, Time, Void>() {
-	    		@Override
-	    		public Void call(JavaRDD<Integer> dataSet, Time time) {
-	    			Integer num = dataSet.first();
-    			    if (num > 0)
-    			    	System.out.printf("Today is cold! There is at least one temperature data lower than 32 degree.\n");
-//    			    else 
-//    			    	System.out.printf("Data showing a normal day.\n");
+    			    else 
+    			    	System.out.printf("A normal day.\n");
     			    return null;
 	    		}
 	    	}
 	    );
 
-//	    System.out.printf("Preparing to process lines.foreachRDD. \n");
+	    System.out.printf("Preparing to process lines.foreachRDD. \n");
 	    
 //	    while (true) {
 //	    	System.out.printf("In infinite loop...\n");
