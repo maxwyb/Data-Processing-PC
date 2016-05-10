@@ -3,6 +3,9 @@ package com.ucla.max.DataProcessing;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.io.*;
+import java.net.*;
+
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.function.Function;
@@ -19,8 +22,9 @@ import scala.Tuple2;
 
 public class DataProcessing {
 	
+	public static String result = ""; // analysis result sending back to Android device
+	
 	@SuppressWarnings("deprecation")
-//	@SuppressWarnings("all")
 	public static void processKafkaData() {
 		
 	    SparkConf sparkConf = new SparkConf().setAppName("processKafkaData").setMaster("local[2]").set("spark.driver.host", "localhost").set("spark.driver.port", "9095");
@@ -80,8 +84,10 @@ public class DataProcessing {
 	    		@Override
 	    		public Void call(JavaRDD<Integer> dataSet, Time time) {
 	    			Integer num = dataSet.first();
-    			    if (num > 0)
+    			    if (num > 0) {
     			    	System.out.printf("Today is hot! There is at least one temperature data greater than 90 degree.\n");
+    			    	result += "Today is hot! There is at least one temperature data greater than 90 degree. ";
+    			    }
 //    			    else 
 //    			    	System.out.printf("Data showing a normal day.\n");
     			    return null;
@@ -108,14 +114,18 @@ public class DataProcessing {
 	    		@Override
 	    		public Void call(JavaRDD<Integer> dataSet, Time time) {
 	    			Integer num = dataSet.first();
-    			    if (num > 0)
+    			    if (num > 0) {
     			    	System.out.printf("Today is cold! There is at least one temperature data lower than 32 degree.\n");
+    			    	result += "Today is cold! There is at least one temperature data lower than 32 degree.";
+    			    }
 //    			    else 
 //    			    	System.out.printf("Data showing a normal day.\n");
     			    return null;
 	    		}
 	    	}
 	    );
+	    
+	    sendBackResult();
 
 //	    System.out.printf("Preparing to process lines.foreachRDD. \n");
 	    
@@ -156,6 +166,54 @@ public class DataProcessing {
         jssc.awaitTermination();
         
     }
+	
+	public static void sendBackResult() {
+		Socket mySocket = null;
+        DataOutputStream os = null;
+        // DataInputStream is = null;
+        BufferedReader is = null;
+
+        try {
+            mySocket = new Socket("131.179.30.188", 9930);
+            os = new DataOutputStream(mySocket.getOutputStream());
+            // is = new DataInputStream(mySocket.getInputStream());
+            is = new BufferedReader(new InputStreamReader(mySocket.getInputStream()));
+        } catch (UnknownHostException exception) {
+            System.out.println(exception);
+        } catch (IOException exception) {
+            System.out.println(exception);
+        }
+
+        if (mySocket != null && os != null && is != null) {
+            try {
+//                os.writeBytes("Lo and Behold!\n");
+//                os.writeBytes("QUIT");
+                os.writeBytes(result);
+//                for (int i = 0; i < DATA_COUNT; i++) {
+//                    Log.d("sunnyDay", "Sending messages to server...");
+//                    os.writeInt(num[i]);
+//                }
+
+                // not expecting reply from the server (Android device), so directly close the Socket.
+                /* 
+                String responseLine;
+                while ((responseLine = is.readLine()) != null) {
+                    String message = "Got server reply: " + responseLine;
+                }
+				*/
+                
+               	System.out.printf("Closing the Socket...\n");
+                os.close();
+                is.close();
+                mySocket.close();
+            }  catch (IOException exception) {
+                System.out.println(exception);
+            }
+        }
+    }
+	
+}
+
 	
 	
 //	}
@@ -229,4 +287,3 @@ public class DataProcessing {
 		    jssc.awaitTermination();
 	}
 	*/
-}

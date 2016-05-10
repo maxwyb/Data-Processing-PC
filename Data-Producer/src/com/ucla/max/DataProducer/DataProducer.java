@@ -10,7 +10,10 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 
 public class DataProducer {
 	
-	public static Integer[] num = {14, 32, 50, 68, 86, 90, 108};
+//	public static Integer[] num = {14, 32, 50, 68, 86, 90, 108};
+	public static int DATA_COUNT = 10;
+	public static Integer[] num = new Integer[DATA_COUNT];
+	public static String temperature = ""; // a String for receiving temperature data from Android device
 	
 	public static void startProducer() {
 		 System.out.printf("startProducer() called.\n");
@@ -26,7 +29,7 @@ public class DataProducer {
 		 props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
 
 		 Producer<String, String> producer = new KafkaProducer<>(props);
-		 for(int i = 0; i < num.length; i++) {
+		 for(int i = 0; i < DATA_COUNT; i++) {
 			 System.out.printf("Sending data... num = %d\n", num[i]);
 		     producer.send(new ProducerRecord<String, String>("temperature", Integer.toString(i), Integer.toString(num[i]))); // send to topic "temperature"
 		 }
@@ -49,7 +52,7 @@ public class DataProducer {
         
         System.out.printf("Initializing Socket...\n");
         try {
-           echoServer = new ServerSocket(9900);
+           echoServer = new ServerSocket(9930);
         } catch (IOException e) {
            System.out.println(e);
         }   
@@ -68,6 +71,10 @@ public class DataProducer {
 	             line = is.readLine();
 	             os.println(line); 
 	             System.out.printf("Echoed the message from client.\n");
+	             
+	             temperature = line; // received the String from Android for temperature data
+	             System.out.printf("Received temperature data of String format. Closing server...\n");
+	             break;
 	           }
 	     } catch (IOException e) {
 	           System.out.println(e);
@@ -83,9 +90,23 @@ public class DataProducer {
 		
 	}
 	
+	public static void parseTemperature() {
+		String[] parsing = temperature.split(", ");
+		for (int i = 0; i < DATA_COUNT; i++) {
+			num[i] = Integer.parseInt(parsing[i]);
+		}
+		
+		for (int i = 0; i < DATA_COUNT; i++) {
+			System.out.printf("num[%d] = %d; ", i, num[i]);
+		}
+		System.out.printf("\n");
+	}
+	
 	public static void main(String args[]) {
 		
-		// startProducer();
 		startServer();
+		parseTemperature();
+		startProducer();
+		
 	}
 }

@@ -55,11 +55,12 @@ public class DataTransfer {
 	     }
 	}
 	
-	//public static void testKafka() {
+
 	 public static void main(String[] args) {
 		System.out.printf("Hello Kafka!\n");
 //		startProducer();
 //		startConsumer();
 		DataProcessing.processKafkaData();
+		
 	}
 }
