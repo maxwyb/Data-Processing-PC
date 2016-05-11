@@ -16,9 +16,9 @@ public class DataProducer {
 	
 	public static String temperature = ""; // a String for receiving temperature data from Android device
 	
-    public static String PC_IP = "131.179.30.195";
+    public static String PC_IP = "131.179.30.165";
     public static String ANDROID_IP = "131.179.45.16";
-    public static Integer PORT = 9940;
+    public static Integer PORT = 9930;
 	
 	public static void startProducer() {
 		// Use Kafka producer to send the temperature data coming from Android device to Kafka server

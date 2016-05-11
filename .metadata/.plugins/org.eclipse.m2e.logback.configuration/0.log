@@ -954,3 +954,34 @@
 2016-05-10 13:58:46,867 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/main/resources
 2016-05-10 13:58:46,867 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2016-05-10 13:58:46,868 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/test/resources
+2016-05-10 16:17:42,929 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
+2016-05-10 16:17:42,963 [Worker-24] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Producer
+2016-05-10 16:17:42,963 [Worker-24] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B clean generate-sources install
+2016-05-10 16:21:12,477 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-10 16:21:12,477 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/main/resources
+2016-05-10 16:21:12,479 [Worker-26] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-10 16:21:12,479 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/test/resources
+2016-05-10 16:35:56,218 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-10 16:35:56,221 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/main/resources
+2016-05-10 16:35:56,222 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-10 16:35:56,222 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/test/resources
+2016-05-10 16:38:02,802 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-10 16:38:02,802 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/main/resources
+2016-05-10 16:38:02,803 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-10 16:38:02,804 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/test/resources
+2016-05-10 16:38:06,373 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-10 16:38:06,373 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/main/resources
+2016-05-10 16:38:06,374 [Worker-7] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-10 16:38:06,375 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/test/resources
+2016-05-10 16:38:19,113 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
+2016-05-10 16:38:19,162 [Worker-1] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Producer
+2016-05-10 16:38:19,163 [Worker-1] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B clean generate-sources install
+2016-05-10 16:38:30,181 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
+2016-05-10 16:38:30,232 [Worker-1] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC
+2016-05-10 16:38:30,232 [Worker-1] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B clean generate-sources install
+2016-05-10 16:44:05,505 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
+2016-05-10 16:44:05,575 [Worker-0] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC
+2016-05-10 16:44:05,576 [Worker-0] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B clean generate-sources install
+2016-05-10 16:44:15,559 [main] INFO  o.e.m2e.actions.ExecutePomAction - Using existing launch configuration
+2016-05-10 16:44:15,593 [Worker-5] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Producer
+2016-05-10 16:44:15,593 [Worker-5] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B clean generate-sources install

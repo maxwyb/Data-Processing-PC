@@ -23,7 +23,7 @@ public class DataProcessing {
 	
 	public static String result = ""; // analysis result sending back to Android device
 	
-    public static String PC_IP = "131.179.30.195";
+    public static String PC_IP = "131.179.30.165";
     public static String ANDROID_IP = "131.179.45.16";
     public static Integer PORT = 9940;
     
