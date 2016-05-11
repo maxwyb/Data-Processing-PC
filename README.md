@@ -23,46 +23,46 @@ The server and client should be better in the same local network, to avoid exter
 2. Open Eclipse. When prompted to select Workspace, choose the root path of this repo. There should be two projects shown in Eclipse's `Project Manager`: `Data-Processing-PC` and `Data-Producer`.
 3. Update the IP addresses of the computer and the Android device in the source file `Data-Processing-PC/src/com.ucla.max.DataProcessing/DataProcessing.java` and `Data-Producer/src/com.ucla.max.DataProducer/DataProducer.java`. There should be two global constants named `PC_IP` and `ANDROID_IP`. Make sure the `PORT` used in data transfer is not occupied by other programs.
 4. Select project `Data-Processing-PC` in `Package Manager`; select `Run - Run As.. - Maven Build`. This should automatically build the program by
-```bash
-mvn clean
-mvn generate-sources
-mvn install
-```
-If not, do these manually in `Run - Run As...` menu. Do the same to `Data-Producer` project.
+	```bash
+	mvn clean
+	mvn generate-sources
+	mvn install
+	```
+	If not, do these manually in `Run - Run As...` menu. Do the same to `Data-Producer` project.
 
 ### Server side - configure Kafka server
 1. Download Apache Kafka binary program with Scala 2.11 from [here](https://www.apache.org/dyn/closer.cgi?path=/kafka/0.9.0.1/kafka_2.11-0.9.0.1.tgz). Open a Terminal and `cd` into the download directory.
 2. Run the following commands to set up a zookeeper and Kafka server, and create a topic called `temperature` to store data from temperature sensor. For simplicity, here we create a standalone Kafka server with no fault-tolerance.
-```bash
-tar -xzf kafka_2.11-0.9.0.1.tgz
-cd kafka_2.11-0.9.0.1
+	```bash
+	tar -xzf kafka_2.11-0.9.0.1.tgz
+	cd kafka_2.11-0.9.0.1
 
-bin/zookeeper-server-start.sh config/zookeeper.properties
-bin/kafka-server-start.sh config/server.properties
+	bin/zookeeper-server-start.sh config/zookeeper.properties
+	bin/kafka-server-start.sh config/server.properties
 
-bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic temperature
-```
+	bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic temperature
+	```
 3. We can open two other terminal windows for Kafka producer and consumer, to monitor the data on Kafka server.
-```bash
-bin/kafka-console-producer.sh --broker-list localhost:9092 --topic temperature
+	```bash
+	bin/kafka-console-producer.sh --broker-list localhost:9092 --topic temperature
 
-bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic temperature --from-beginning
-```
-Detailed instructions on Apache Kafka can be found on this [Quick Start guide](http://kafka.apache.org/documentation.html#quickstart).
+	bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic temperature --from-beginning
+	```
+	Detailed instructions on Apache Kafka can be found on this [Quick Start guide](http://kafka.apache.org/documentation.html#quickstart).
 
 ### Server side - Run the server programs
 1. Open a terminal window and `cd` into Eclipse Workspace. First run the `Data-Processing-PC` program:
-```bash
-cd Data-Processing-PC/
-mvn exec:java -D exec.mainClass=com.ucla.max.DataProcessing.DataTransfer > ~/Desktop/DataProcessing-output.txt
-```
+	```bash
+	cd Data-Processing-PC/
+	mvn exec:java -D exec.mainClass=com.ucla.max.DataProcessing.DataTransfer > ~/Desktop/DataProcessing-output.txt
+	```
 The standard output is piped to a text file which makes it easier to examine incoming data on Kafka server. the program may generate some Exception warning messages that can be ignored. **If the output file shows `Build Failure`, it is probable that the port for communication is already in use, or a previous instance of this program is not exited. Restart the computer, rebuild the Maven project and try again.**  
 
 2. Open another terminal window in the Workspace, and run the `Data-Producer` program:
-```bash
-cd Data-Producer/
-mvn exec:java -D exec.mainClass=com.ucla.max.DataProducer.DataProducer
-```
+	```bash
+	cd Data-Producer/
+	mvn exec:java -D exec.mainClass=com.ucla.max.DataProducer.DataProducer
+	```
 
 ### Client side - Install & run the Android app
 1. If Android Studio is not already installed, download it from [here](http://developer.android.com/tools/studio/index.html).
