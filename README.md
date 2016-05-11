@@ -56,7 +56,7 @@ Detailed instructions on Apache Kafka can be found on this [Quick Start guide](h
 cd Data-Processing-PC/
 mvn exec:java -D exec.mainClass=com.ucla.max.DataProcessing.DataTransfer > ~/Desktop/DataProcessing-output.txt
 ```
-The standard output is piped to a text file which makes it easier to examine incoming data on Kafka server. the program may generate some Exception warning messages that can be ignored. **If the output file shows `Build Failure`, it is probable that the port for communication is already in use, or a previous instance of this program is not exited. Restart the computer, rebuild the Maven project and try again.**
+The standard output is piped to a text file which makes it easier to examine incoming data on Kafka server. the program may generate some Exception warning messages that can be ignored. **If the output file shows `Build Failure`, it is probable that the port for communication is already in use, or a previous instance of this program is not exited. Restart the computer, rebuild the Maven project and try again.**  
 2. Open another terminal window in the Workspace, and run the `Data-Producer` program:
 ```bash
 cd Data-Producer/
