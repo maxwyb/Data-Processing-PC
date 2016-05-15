@@ -21,7 +21,7 @@ The server and client should be better in the same local network, to avoid exter
 ### Server side - build the projects
 1. Download this repository. If you do not have Eclipse installed on computer, download the latest version from [here](https://eclipse.org/downloads/).
 2. Open Eclipse. When prompted to select Workspace, choose the root path of this repo. There should be two projects shown in Eclipse's `Project Manager`: `Data-Processing-PC` and `Data-Producer`.
-3. Update the IP addresses of the computer and the Android device in the source file `Data-Processing-PC/src/com.ucla.max.DataProcessing/DataProcessing.java` and `Data-Producer/src/com.ucla.max.DataProducer/DataProducer.java`. There should be two global constants named `PC_IP` and `ANDROID_IP`. Make sure the `PORT` used in data transfer is not occupied by other programs.
+3. **Update the IP addresses** of the computer and the Android device in the source file `Data-Processing-PC/src/com.ucla.max.DataProcessing/DataProcessing.java` and `Data-Producer/src/com.ucla.max.DataProducer/DataProducer.java`. There should be two global constants named `PC_IP` and `ANDROID_IP`. Make sure the `PORT` used in data transfer is not occupied by other programs.
 4. Select project `Data-Processing-PC` in `Package Manager`; select `Run - Run As.. - Maven Build`. This should automatically build the program by
 	```bash
 	mvn clean
@@ -67,7 +67,7 @@ The standard output is piped to a text file which makes it easier to examine inc
 ### Client side - Install & run the Android app
 1. If Android Studio is not already installed, download it from [here](http://developer.android.com/tools/studio/index.html).
 2. Download the Android app project from [Data-Processing-Android repo](https://github.com/maxwyb/Data-Processing-Android). Import this project into Android Studio.
-3. Open `AndroidData - app - src - main - java - com - ucla - max - androiddata - MainActivity.java` file, and change the global variable `PC_IP` and `ANDROID_IP` to the current IP addresses of server and client. Make sure `PORT` is not used by other applications.
+3. Open `AndroidData - app - src - main - java - com - ucla - max - androiddata - MainActivity.java` file, and **change the global variable `PC_IP` and `ANDROID_IP` to the current IP addresses of server and client**. Make sure `PORT` is not used by other applications.
 4. Connect your Android device to the computer; make sure its USB debugging mode in `Developer Settings` is enabled. In Android Studio, click `Run - Run "app"` and select the device to run the app.
 5. After clicking the button in the app, some simulated temperature data should appear on the left, and analysis results of these data will be shown on the right **as log**.
 
