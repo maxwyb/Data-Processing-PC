@@ -76,6 +76,12 @@ The standard output is piped to a text file which makes it easier to examine inc
 Simply search "ip" on Google.
 
 
+## Relative resources
+[Spark Programming Guide](http://spark.apache.org/docs/latest/programming-guide.html)  
+[Spark Streaming](http://spark.apache.org/docs/latest/streaming-programming-guide.html)  
+[Spark Streaming + Kafka Integration Guide](http://spark.apache.org/docs/latest/streaming-kafka-integration.html)  
+
+
 ## Future
 - We plan to add more rules on Apache Spark for processing temperature data, to provide more meaningful results.  
 - Currently the server is deployed on local machine. We could move it to remote servers such as Amazon EC2, and add multiple Kafka servers to increase processing power and support fault-tolerance. 
