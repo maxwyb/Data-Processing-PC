@@ -1109,3 +1109,7 @@
 2016-05-24 17:26:57,086 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/main/resources
 2016-05-24 17:26:57,087 [Worker-6] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2016-05-24 17:26:57,088 [Worker-6] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/test/resources
+2016-05-24 17:44:56,809 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 17:44:56,812 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/main/resources
+2016-05-24 17:44:56,813 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 17:44:56,814 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/test/resources

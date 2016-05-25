@@ -193,7 +193,6 @@ public class DataProcessing {
 			result += "A comfortable day! All temperature data are between 32 and 90 degree. ";
 		}
 		
-		// initialize flags for next round of data processing
 		isHot = 0;
 		isCold = 0;
 		
