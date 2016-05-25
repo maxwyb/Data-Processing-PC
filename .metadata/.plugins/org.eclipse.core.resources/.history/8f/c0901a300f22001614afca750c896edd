@@ -193,9 +193,6 @@ public class DataProcessing {
 			result += "A comfortable day! All temperature data are between 32 and 90 degree. ";
 		}
 		
-		isHot = 0;
-		isCold = 0;
-		
 	}
 	
 	public static void sendBackResult() {
