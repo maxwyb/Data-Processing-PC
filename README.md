@@ -6,6 +6,7 @@ The client program is in [Data-Processing-Android repo](https://github.com/maxwy
 ## Updates - What's new in version 1.1.0
 1. Added new rules to temperature data analysis. Now it can determine if the data reflect a cold, hot, comfortable or strange day (strange means the temperature difference is very large, i.e. it can both be hot and cold in one day).
 2. Improved the temperature sensor simulation. It can simulate various kinds of climate now.
+3. Multithreading bugs fixed. Now the analysis result is always corresponding with the current round of temperature sensor data.
 
 
 ## General Idea

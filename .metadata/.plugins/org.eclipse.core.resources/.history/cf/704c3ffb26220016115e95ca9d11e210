@@ -17,7 +17,7 @@ public class DataProducer {
 	public static String temperature = ""; // a String for receiving temperature data from Android device
 	
     public static String PC_IP = "131.179.30.42";
-    public static String ANDROID_IP = "131.179.45.175";
+    public static String ANDROID_IP = "131.179.45.145";
     public static Integer PORT = 9940;
 	
 	public static void startProducer() {

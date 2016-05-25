@@ -1113,3 +1113,67 @@
 2016-05-24 17:44:56,812 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/main/resources
 2016-05-24 17:44:56,813 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2016-05-24 17:44:56,814 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/test/resources
+2016-05-24 20:15:50,781 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 20:15:50,783 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/main/resources
+2016-05-24 20:15:50,784 [Worker-5] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 20:15:50,785 [Worker-5] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/test/resources
+2016-05-24 20:15:52,629 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 20:15:52,629 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/main/resources
+2016-05-24 20:15:52,630 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 20:15:52,631 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/test/resources
+2016-05-24 20:16:03,977 [Worker-1] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC
+2016-05-24 20:16:03,978 [Worker-1] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B clean
+2016-05-24 20:16:05,298 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 20:16:05,299 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/main/resources
+2016-05-24 20:16:05,300 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 20:16:05,300 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/test/resources
+2016-05-24 20:16:08,512 [Worker-4] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC
+2016-05-24 20:16:08,512 [Worker-4] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B generate-sources
+2016-05-24 20:16:13,193 [Worker-0] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC
+2016-05-24 20:16:13,194 [Worker-0] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B install
+2016-05-24 20:16:16,115 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 20:16:16,115 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/main/resources
+2016-05-24 20:16:16,116 [Worker-3] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 20:16:16,117 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/test/resources
+2016-05-24 20:16:21,357 [Worker-4] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Producer
+2016-05-24 20:16:21,357 [Worker-4] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B clean
+2016-05-24 20:16:23,324 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 20:16:23,324 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/main/resources
+2016-05-24 20:16:23,325 [Worker-2] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 20:16:23,326 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/test/resources
+2016-05-24 20:16:25,357 [Worker-0] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Producer
+2016-05-24 20:16:25,358 [Worker-0] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B generate-sources
+2016-05-24 20:16:29,896 [Worker-0] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Producer
+2016-05-24 20:16:29,896 [Worker-0] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B install
+2016-05-24 20:16:32,109 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 20:16:32,110 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/main/resources
+2016-05-24 20:16:32,111 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 20:16:32,111 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/test/resources
+2016-05-24 21:15:26,402 [Worker-4] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC
+2016-05-24 21:15:26,406 [Worker-4] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B clean
+2016-05-24 21:15:29,006 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 21:15:29,008 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/main/resources
+2016-05-24 21:15:29,009 [Worker-4] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 21:15:29,009 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/test/resources
+2016-05-24 21:15:30,613 [Worker-6] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC
+2016-05-24 21:15:30,613 [Worker-6] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B generate-sources
+2016-05-24 21:15:34,610 [Worker-1] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC
+2016-05-24 21:15:34,610 [Worker-1] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B install
+2016-05-24 21:15:37,735 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 21:15:37,735 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/main/resources
+2016-05-24 21:15:37,736 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 21:15:37,737 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Processing-PC/src/test/resources
+2016-05-24 21:15:43,002 [Worker-3] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Producer
+2016-05-24 21:15:43,002 [Worker-3] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B clean
+2016-05-24 21:15:44,282 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 21:15:44,282 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/main/resources
+2016-05-24 21:15:44,283 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 21:15:44,283 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/test/resources
+2016-05-24 21:15:47,171 [Worker-6] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Producer
+2016-05-24 21:15:47,172 [Worker-6] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B generate-sources
+2016-05-24 21:15:50,752 [Worker-2] INFO  o.e.m.i.launch.MavenLaunchDelegate - /Users/Max/Desktop/Data-Processing-PC/Data-Producer
+2016-05-24 21:15:50,752 [Worker-2] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B install
+2016-05-24 21:15:53,042 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 21:15:53,043 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/main/resources
+2016-05-24 21:15:53,044 [Worker-1] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2016-05-24 21:15:53,045 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /Users/Max/Desktop/Data-Processing-PC/Data-Producer/src/test/resources
