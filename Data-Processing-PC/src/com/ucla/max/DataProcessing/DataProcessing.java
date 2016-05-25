@@ -23,9 +23,11 @@ public class DataProcessing {
 	
 	public static String result = ""; // analysis result sending back to Android device
 	
-    public static String PC_IP = "131.179.30.195";
-    public static String ANDROID_IP = "131.179.45.16";
+    public static String PC_IP = "131.179.30.42";
+    public static String ANDROID_IP = "131.179.45.175";
     public static Integer PORT = 9940;
+    
+    public static Integer isHot = 0, isCold = 0;
     
 	@SuppressWarnings("deprecation")
 	public static void processKafkaData() { 
@@ -68,6 +70,7 @@ public class DataProcessing {
 	    else 
 	    	System.out.printf("A normal day.\n");
 	    */
+
 	    
 	    // Rule #1: check if any temperature sensor data is above a threshold
 	    JavaDStream<Integer> count = lines.map(new Function<String, Integer>() {
@@ -89,8 +92,10 @@ public class DataProcessing {
 	    		public Void call(JavaRDD<Integer> dataSet, Time time) {
 	    			Integer num = dataSet.first();
     			    if (num > 0) {
-    			    	System.out.printf("Today is hot! There is at least one temperature data greater than 90 degree.\n");
-    			    	result += "Today is hot! There is at least one temperature data greater than 90 degree. ";
+//    			    	System.out.printf("Today is hot! There is at least one temperature data greater than 90 degree.\n");
+//    			    	result += "Today is hot! There is at least one temperature data greater than 90 degree. ";
+    			    	System.out.printf("isHot flag is set to 1. There is at least one temperature data greater than 90 degree.\n");
+    			    	isHot = 1;
     			    }
 //    			    else 
 //    			    	System.out.printf("Data showing a normal day.\n");
@@ -119,8 +124,10 @@ public class DataProcessing {
 	    		public Void call(JavaRDD<Integer> dataSet, Time time) {
 	    			Integer num = dataSet.first();
     			    if (num > 0) {
-    			    	System.out.printf("Today is cold! There is at least one temperature data lower than 32 degree.\n");
-    			    	result += "Today is cold! There is at least one temperature data lower than 32 degree.";
+//    			    	System.out.printf("Today is cold! There is at least one temperature data lower than 32 degree.\n");
+//    			    	result += "Today is cold! There is at least one temperature data lower than 32 degree.";
+    			    	System.out.printf("isCold flag is set to 1. There is at least one temperature data lower than 32 degree.\n");
+    			    	isCold = 1;
     			    }
 //    			    else 
 //    			    	System.out.printf("Data showing a normal day.\n");
@@ -174,7 +181,27 @@ public class DataProcessing {
         
     }
 	
+	public static void generateResult() {
+		// generate analysis message by flags set
+		if (isHot == 1 && isCold == 0) {
+			result += "Today is hot! There is at least one temperature data greater than 90 degree. ";
+		} else if (isHot == 0 && isCold == 1) {
+			result += "Today is cold! There is at least one temperature data lower than 32 degree. ";
+		} else if (isHot == 1 && isCold == 1) {
+			result += "Strange day, both hot and cold! There is at least one temperature data greater than 90 degree, and another lower than 32 degree. ";
+		} else {
+			result += "A comfortable day! All temperature data are between 32 and 90 degree. ";
+		}
+		
+		// initialize flags for next round of data processing
+		isHot = 0;
+		isCold = 0;
+		
+	}
+	
 	public static void sendBackResult() {
+		generateResult();
+		
 		// send analysis result back to Android by Socket communication. Here Android is server and PC is client.
 		Socket mySocket = null;
         DataOutputStream os = null;

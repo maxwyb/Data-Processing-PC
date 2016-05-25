@@ -2,6 +2,13 @@
 An Android app that analyzes data stream from a temperature sensor. This is the server program running on PC or Mac.  
 The client program is in [Data-Processing-Android repo](https://github.com/maxwyb/Data-Processing-Android).
 
+
+## Updates - What's new in version 1.1
+1. Added new rules to temperature data analysis. Now it can determine if the data reflect a cold, hot, comfortable or strange day (strange means the temperature difference is very large, i.e. it can both be hot and cold in one day).
+2. Improved the temperature sensor simulation. It can simulate various kinds of climate now.
+3. Multithreading bugs fixed. Now the analysis result is always corresponding with the current round of temperature sensor data.
+
+
 ## General Idea
 Temperature data is processed on server, with the analysis result sent back to client. Client and server communication is through Socket in Java via TCP/IP. Two programs are simultaneously running on the server: `Data-Producer` receivers data coming from the Android device and sends them to Apache Kafka server(s). Meanwhile, `Data-Processing-PC` analyzes data in real time by Apache Spark Streaming, and sends results back to Android device.  
 
